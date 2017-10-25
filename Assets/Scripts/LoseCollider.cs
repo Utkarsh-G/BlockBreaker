@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LoseCollider : MonoBehaviour {
 
-    public LevelManager myLvlManager;
+    LevelManager myLvlManager;
     //public float gravX;
     //public float gravY;
     //public float gravZ;
@@ -11,6 +11,7 @@ public class LoseCollider : MonoBehaviour {
 	void Start () {
 
         //Physics.gravity = new Vector3(gravX, gravY, gravZ);
+        myLvlManager = GameObject.FindObjectOfType<LevelManager>();
 	
 	}
 	
@@ -23,8 +24,9 @@ public class LoseCollider : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Collision happened");
-        myLvlManager.LoadLevel(2);
+        print("Loss Collision happened. You Lost."); 
+		Hedge.breakableCount = 0;
+        myLvlManager.LoadLevel(5);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
